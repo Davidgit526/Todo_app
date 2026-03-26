@@ -22,10 +22,6 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Values.postgres.secretName }}
-          volumeMounts:
-            - name: {{ .Values.postgres.volumeName }}
-              mountPath: {{ .Values.postgres.volumeMountPath }}
-              subPath: {{ .Values.postgres.volumeSubPath }}
       initContainers:
         - name: {{ .Values.postgres.initContainerName }}
           image: {{ .Values.postgres.initContainerImage }}
@@ -33,11 +29,3 @@ spec:
             - "sh"
             - "-c"
             - {{ .Values.postgres.initContainerCommand }}
-          volumeMounts:
-            - name: {{ .Values.postgres.volumeName }}
-              mountPath: {{ .Values.postgres.initVolumeMountPath }}
-      volumes:
-        - name: {{ .Values.postgres.volumeName }}
-          persistentVolumeClaim:
-            claimName: {{ .Values.postgres.pvcName }}
-
