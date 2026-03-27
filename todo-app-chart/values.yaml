@@ -12,7 +12,7 @@ todo:
   serviceName: todo-service
   servicePort: 5000
   targetPort: 5000
-  serviceType: ClusterIP
+  serviceType: LoadBalancer
 
   # Ingress
   ingressName: todo-ingress
